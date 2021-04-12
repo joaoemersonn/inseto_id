@@ -8,6 +8,8 @@ class CatalogoPage extends StatefulWidget {
 class _CatalogoPageState extends State<CatalogoPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

@@ -22,6 +22,8 @@ class _HomePageState extends State<HomePage> {
       )),
       drawer: _menuHamburguer(),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _botaoMenu(Image.asset("images/cam.png", width: 150), "IDENTIFICAR",
               funcaobotao: () => Navigator.pushNamed(context, 'identificar')),

@@ -35,26 +35,79 @@ class _IdentificarPageState extends State<IdentificarPage> {
             else
               return Stack(
                 children: [
-                  Expanded(child: CameraPreview(bloc.cameracontroller)),
+                  Expanded(
+                    child:
+                        Container(child: CameraPreview(bloc.cameracontroller)),
+                  ),
                   Center(
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                        Text(
-                            'Aponte para um inseto para começar a indentificar!',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              border: Border.all(color: Colors.grey),
+                              color: Colors.grey),
+                          child: Text(
+                              ' Aponte para um inseto para começar a indentificar! ',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
                                 color: Colors.white,
-                                decorationStyle: TextDecorationStyle.wavy)),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              )),
+                        ),
                         Container(
                           height: 150,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              SizedBox(width: 10),
-                              CircleAvatar(
-                                radius: 30,
+                              StreamBuilder<bool>(
+                                  stream: bloc.flashOut,
+                                  initialData: false,
+                                  builder: (context, snapshot) {
+                                    return RawMaterialButton(
+                                      onPressed: bloc.desligar_ligar_flash,
+                                      elevation: 2.0,
+                                      fillColor: Colors.green,
+                                      child: snapshot.data
+                                          ? Icon(
+                                              Icons.flash_off,
+                                              color: Colors.white,
+                                              size: 35.0,
+                                            )
+                                          : Icon(
+                                              Icons.flash_on,
+                                              color: Colors.white,
+                                              size: 35.0,
+                                            ),
+                                      padding: EdgeInsets.all(15.0),
+                                      shape: CircleBorder(),
+                                    );
+                                  }),
+                              RawMaterialButton(
+                                onPressed: () {},
+                                elevation: 2.0,
+                                fillColor: Colors.green,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                ),
+                                padding: EdgeInsets.all(15.0),
+                                shape: CircleBorder(),
+                              ),
+                              RawMaterialButton(
+                                onPressed: () {},
+                                elevation: 2.0,
+                                fillColor: Colors.green,
+                                child: Icon(
+                                  Icons.help_outline_outlined,
+                                  color: Colors.white,
+                                  size: 35.0,
+                                ),
+                                padding: EdgeInsets.all(15.0),
+                                shape: CircleBorder(),
                               ),
                             ],
                           ),
