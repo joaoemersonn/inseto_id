@@ -1,7 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:inseto_id/app/descricaoInseto/descricao_bloc.dart';
+import 'package:inseto_id/app/descricaoInseto/descricao_module.dart';
 import 'package:inseto_id/app/identificar/identificar_bloc.dart';
 import 'package:inseto_id/app/identificar/identificar_module.dart';
+import 'package:inseto_id/app/shared/temas.dart';
 
 class IdentificarPage extends StatefulWidget {
   @override
@@ -10,6 +13,8 @@ class IdentificarPage extends StatefulWidget {
 
 class _IdentificarPageState extends State<IdentificarPage> {
   final IdentificarBloc bloc = IdentificarModule.to.getBloc<IdentificarBloc>();
+  final DescricaoBloc blocDescricao =
+      IdentificarModule.to.getBloc<DescricaoBloc>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +40,19 @@ class _IdentificarPageState extends State<IdentificarPage> {
             else
               return Stack(
                 children: [
-                  Expanded(
-                    child:
-                        Container(child: CameraPreview(bloc.cameracontroller)),
+                  Container(
+                      alignment: Alignment.center,
+                      child: CameraPreview(bloc.cameracontroller)),
+                  Container(
+                    padding: const EdgeInsets.all(15),
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.help_outline_outlined,
+                          color: CORPRICIPAL,
+                          size: 50,
+                        ),
+                        onPressed: () {}),
                   ),
                   Center(
                       child: Column(
@@ -88,7 +103,14 @@ class _IdentificarPageState extends State<IdentificarPage> {
                                     );
                                   }),
                               RawMaterialButton(
-                                onPressed: () {},
+                                onPressed: () async {
+                                  String insetoID = await bloc.identificar();
+                                  if (insetoID != null) {
+                                    blocDescricao.setInsetoID(insetoID);
+                                    Navigator.pushNamed(
+                                        context, 'descricaoInseto');
+                                  }
+                                },
                                 elevation: 2.0,
                                 fillColor: Colors.green,
                                 child: CircleAvatar(
@@ -102,7 +124,7 @@ class _IdentificarPageState extends State<IdentificarPage> {
                                 elevation: 2.0,
                                 fillColor: Colors.green,
                                 child: Icon(
-                                  Icons.help_outline_outlined,
+                                  Icons.photo_library_rounded,
                                   color: Colors.white,
                                   size: 35.0,
                                 ),

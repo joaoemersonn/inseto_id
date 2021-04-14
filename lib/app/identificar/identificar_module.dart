@@ -1,12 +1,14 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:inseto_id/app/descricaoInseto/descricao_bloc.dart';
 import 'package:inseto_id/app/identificar/identificar_bloc.dart';
 import 'package:inseto_id/app/identificar/identificar_widgets.dart';
 
 class IdentificarModule extends ModuleWidget {
   @override
   // TODO: implement blocs
-  List<Bloc> get blocs => [Bloc((i) => IdentificarBloc())];
+  List<Bloc> get blocs =>
+      [Bloc((i) => IdentificarBloc()), Bloc((i) => DescricaoBloc())];
 
   @override
   // TODO: implement dependencies

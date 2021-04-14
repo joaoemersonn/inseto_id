@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inseto_id/app/home/home_bloc.dart';
 import 'package:inseto_id/app/home/home_module.dart';
-import 'package:inseto_id/app/identificar/identificar_bloc.dart';
-import 'package:inseto_id/app/identificar/identificar_module.dart';
 import 'package:inseto_id/app/shared/temas.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +16,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
           title: Center(
-        child: Text("INSETO ID"),
+        child: Image.asset(
+          "images/iconBranco.png",
+          width: 45,
+        ),
       )),
       drawer: _menuHamburguer(),
       body: Column(
@@ -93,16 +94,17 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          ListTile(
-            title: Text('Configurações'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+          // ListTile(
+          //   title: Text('Configurações'),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
           ListTile(
             title: Text('Sobre'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, "sobre");
             },
           ),
         ],

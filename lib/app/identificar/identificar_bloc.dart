@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:camera/camera.dart';
+import 'package:inseto_id/app/shared/models/animal_gbif.dart';
+import 'package:inseto_id/app/shared/services/GBIF.dart';
 
 class IdentificarBloc extends BlocBase {
   CameraController cameracontroller;
@@ -26,8 +28,14 @@ class IdentificarBloc extends BlocBase {
           CameraController(cameras[0], ResolutionPreset.ultraHigh);
       await cameracontroller.initialize();
     }
-    print("inicializa camera");
     return true;
+  }
+
+  Future<String> identificar() async {
+    //COLOCAR API IDENTINFICAR
+    await Future.delayed(Duration(seconds: 1));
+
+    return "1035185";
   }
 
   @override
