@@ -13,6 +13,7 @@ class FLICKR {
   Future<ImagensFlickr> getFotosbyTag(String tag) async {
     String url_api =
         "https://api.flickr.com/services/feeds/photos_public.gne?tags=${tag}&format=json&nojsoncallback=1";
+    //print(url_api);
     var resposta = await Dio().get<Map<String, dynamic>>(url_api);
     return ImagensFlickr.fromJson(resposta.data);
   }

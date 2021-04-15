@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:inseto_id/app/shared/models/animal_gbif.dart';
 import 'package:inseto_id/app/shared/models/images_flickr.dart';
+import 'package:inseto_id/app/shared/models/wiki_results.dart';
 import 'package:inseto_id/app/shared/services/FLICKR.dart';
 import 'package:inseto_id/app/shared/services/GBIF.dart';
+import 'package:inseto_id/app/shared/services/WIKIAPI.dart';
 import 'package:rxdart/rxdart.dart';
 
 class DescricaoBloc extends BlocBase {
@@ -29,6 +31,10 @@ class DescricaoBloc extends BlocBase {
 
   Future<ImagensFlickr> getImagensbyTag(String busca) {
     return FLICKR.instance.getFotosbyTag(busca);
+  }
+
+  Future<WikiResult> getDescricao(String especieName) {
+    return WIKIAPI.instance.getDescricao(especieName);
   }
 
   Future<AnimalGBIF> getInsetobyID(String insetoid) async {

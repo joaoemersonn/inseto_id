@@ -32,6 +32,7 @@ dependencies:
   camera: ^0.8.1
   dio: ^4.0.0
   rxdart: ^0.26.0
+  flutter_html: ^0.8.2
 
 
 dev_dependencies:
