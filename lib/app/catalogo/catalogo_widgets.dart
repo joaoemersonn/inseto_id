@@ -39,7 +39,16 @@ class _CatalogoPageState extends State<CatalogoPage> {
                     Text("Carregando...")
                   ]),
             );
-          if (!snapshot.hasData) return Center(child: Text("Não há dados!"));
+          if (!snapshot.hasData)
+            return Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Não há dados!"),
+                    Text(
+                        "(Aqui aparecerão os insetos já identificados por você)")
+                  ]),
+            );
           return SingleChildScrollView(
             child: Column(
               children: [],

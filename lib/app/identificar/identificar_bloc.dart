@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:camera/camera.dart';
-import 'package:inseto_id/app/shared/models/animal_gbif.dart';
-import 'package:inseto_id/app/shared/services/GBIF.dart';
 
 class IdentificarBloc extends BlocBase {
   CameraController cameracontroller;
@@ -35,7 +33,7 @@ class IdentificarBloc extends BlocBase {
     //COLOCAR API IDENTINFICAR
     await Future.delayed(Duration(seconds: 1));
 
-    return "1035185"; //Amera Aenea = 1035185
+    return "5231190"; //Amera Aenea = 1035185
   }
 
   @override
